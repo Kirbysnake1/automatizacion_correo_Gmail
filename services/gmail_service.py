@@ -43,8 +43,8 @@ class GmailService:
                 smtp.login(self.email, self.password)
                 smtp.send_message(message)
 
-            print(f"✅ Correo enviado correctamente a {recipient}")
-
+            return True
+        
         except Exception as e:
 
-            print(f"❌ {e}")
+            return False
