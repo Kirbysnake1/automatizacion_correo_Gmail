@@ -1,0 +1,8 @@
+Hola,
+
+Este es un correo de prueba enviado desde Python.
+
+Si estás leyendo este mensaje, la automatización funciona correctamente.
+
+Saludos,
+Andrés Felipe Ramírez Espinal
