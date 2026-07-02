@@ -1,0 +1,15 @@
+# Entorno virtual
+.venv/
+
+# Variables de entorno
+.env
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+
+# Excel generado
+data/enviados.xlsx
