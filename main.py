@@ -20,7 +20,8 @@ subjects = [
     "QA Tester / Automation Engineer | Andrés Ramírez",
     "QA Analyst | Testing Manual y Automatización | Andrés Ramírez",
     "QA Engineer | Automatización, SQL y Jira | Andrés Ramírez",
-    "QA Tester | Experiencia en automatización | Andrés Ramírez"
+    "QA Tester | Experiencia en automatización | Andrés Ramírez",
+    "QA Automation Engineer | Andrés Felipe Ramírez Espinal"
 ]
 
 logger.info(f"Se encontraron {len(companies)} empresas.")
@@ -41,12 +42,15 @@ for company in companies:
 
     if sent:
         logger.success(f"Correo enviado a {company['empresa']}")
+        logger.subject(subject)
+
     else:
         logger.error(f"No se pudo enviar el correo a {company['empresa']}")
 
     delay = random.randint(DELAY_MIN_SECONDS, DELAY_MAX_SECONDS)
 
     logger.wait(delay)
-    time.sleep(delay)
+
+
 
 logger.success("Proceso finalizado.")

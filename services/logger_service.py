@@ -1,5 +1,7 @@
 import logging
 import os
+import sys
+import time
 
 
 class LoggerService:
@@ -10,7 +12,6 @@ class LoggerService:
 
         self.logger = logging.getLogger("gmail_automation")
 
-        # Evita duplicar logs si el servicio se crea más de una vez
         if self.logger.handlers:
             return
 
@@ -27,7 +28,6 @@ class LoggerService:
         )
 
         file_handler.setFormatter(formatter)
-
         self.logger.addHandler(file_handler)
 
     def info(self, message):
@@ -46,6 +46,20 @@ class LoggerService:
         print(f"❌ {message}")
         self.logger.error(message)
 
+    def subject(self, subject):
+        print(f"📨 Subject enviado: {subject}")
+        self.logger.info(f"Subject enviado: {subject}")
+
     def wait(self, seconds):
-        print(f"⏳ Esperando {seconds} segundos...")
-        self.logger.info(f"Esperando {seconds} segundos")
+        print(f"⏳ Tiempo configurado de espera: {seconds} segundos")
+        self.logger.info(f"Tiempo configurado de espera: {seconds} segundos")
+
+        for remaining in range(seconds, 0, -1):
+            sys.stdout.write(
+                f"\r⌛ Faltan {remaining:02d} segundos para el siguiente correo..."
+            )
+            sys.stdout.flush()
+            time.sleep(1)
+
+        sys.stdout.write("\r✅ Espera finalizada.                                \n")
+        sys.stdout.flush()
