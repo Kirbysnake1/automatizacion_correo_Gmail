@@ -8,8 +8,10 @@ from services.logger_service import LoggerService
 logger = LoggerService()
 gmail = GmailService()
 
-with open("templates/correo.txt", encoding="utf-8") as file:
+with open("templates/correo.html", encoding="utf-8") as file:
     body = file.read()
+
+CV_PATH = "attachments/CV_AndresRamirez.pdf"
 
 excel = ExcelService("data/empresas.xlsx")
 
@@ -24,7 +26,9 @@ for company in companies:
     gmail.send_email(
         recipient=company["correo"],
         subject="QA Automation Engineer | Andrés Felipe Ramírez Espinal",
-        body=body
+        body=body,
+        attachment_path=CV_PATH
+
     )
 
     logger.success(f"Correo enviado a {company['empresa']}")

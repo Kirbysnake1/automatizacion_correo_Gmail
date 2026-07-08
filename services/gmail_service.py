@@ -24,7 +24,13 @@ class GmailService:
             message["To"] = recipient
             message["Subject"] = subject
 
-            message.set_content(body)
+            # Texto plano (fallback)
+            message.set_content(
+                "Este correo contiene una versión HTML. Si no puedes verla, utiliza un cliente compatible."
+            )
+
+            # HTML
+            message.add_alternative(body, subtype="html")
 
             # Adjuntar archivo
             if attachment_path:
@@ -44,7 +50,8 @@ class GmailService:
                 smtp.send_message(message)
 
             return True
-        
+
         except Exception as e:
 
+            print(e)
             return False
