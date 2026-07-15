@@ -7,8 +7,8 @@ EMAIL = os.getenv("EMAIL")
 APP_PASSWORD = os.getenv("APP_PASSWORD")
 CV_PATH = os.getenv("CV_PATH")
 
-DELAY_MIN_SECONDS = int(os.getenv("DELAY_MIN_SECONDS", "30"))
-DELAY_MAX_SECONDS = int(os.getenv("DELAY_MAX_SECONDS", "59"))
+DELAY_MIN_SECONDS = int(os.getenv("DELAY_MIN_SECONDS", "25"))
+DELAY_MAX_SECONDS = int(os.getenv("DELAY_MAX_SECONDS", "48"))
 
 if not EMAIL:
     raise ValueError("Falta EMAIL en el archivo .env")
